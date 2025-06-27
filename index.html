@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
-<body>
+<body class="gradient-bg">
   <main>
     <section aria-label="GitHub Profile" id="github-profile" class="github-profile">
       <div id="github-avatar"></div>
@@ -16,11 +16,10 @@
       <p id="github-bio"></p>
     </section>
     <script>
-      // Fetch GitHub profile data for main section (header handled by header.js)
+      // Fetch GitHub profile data for main section
       fetch('https://api.github.com/users/mvimal2607')
         .then(response => response.json())
         .then(data => {
-          // Main section
           document.getElementById('github-avatar').innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="180" style="border-radius: 50%;"></a>`;
           document.getElementById('github-username').textContent = `Hi, I'm ${data.login}`;
           document.getElementById('github-bio').textContent = data.bio || 'No bio available.';

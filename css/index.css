@@ -11,19 +11,19 @@ body {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  background: #ffffff; /* Default static background for non-gradient pages */
+}
+
+.gradient-bg {
   background: radial-gradient(circle at center, #4a1d2a, #8b4513, #4a1d2a, #6a2e5a);
   background-size: 200% 200%;
   animation: radialPulse 8s ease-in-out infinite;
 }
 
-@keyframes radialPulse {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
 header {
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black for contrast */
+  background: radial-gradient(circle at center, #4a1d2a, #8b4513, #4a1d2a, #6a2e5a);
+  background-size: 200% 200%;
+  animation: radialPulse 8s ease-in-out infinite;
   padding: 1rem 2rem;
   margin-bottom: 2rem;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
