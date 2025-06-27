@@ -1,4 +1,24 @@
 document.addEventListener('DOMContentLoaded', function() {
+  // Function to attach menu toggle event
+  function setupMenuToggle() {
+    const menuToggle = document.querySelector('.menu-toggle');
+    if (menuToggle && getComputedStyle(menuToggle).display !== 'none') {
+      menuToggle.addEventListener('click', function() {
+        this.classList.toggle('active');
+        const navMenu = document.querySelector('.nav-menu');
+        if (navMenu) {
+          navMenu.classList.toggle('active');
+        } else {
+          console.error('Nav menu element not found');
+        }
+      });
+    } else if (menuToggle) {
+      console.log('Menu toggle is currently hidden, waiting for resize or load');
+    } else {
+      console.error('Menu toggle element not found');
+    }
+  }
+
   // Fetch and insert header
   fetch('header.html')
     .then(response => {
@@ -10,21 +30,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(html => {
       document.body.insertAdjacentHTML('afterbegin', html);
-      // Attach event listener after header is inserted
-      const menuToggle = document.querySelector('.menu-toggle');
-      if (menuToggle) {
-        menuToggle.addEventListener('click', function() {
-          this.classList.toggle('active');
-          const navMenu = document.querySelector('.nav-menu');
-          if (navMenu) {
-            navMenu.classList.toggle('active');
-          } else {
-            console.error('Nav menu element not found');
-          }
-        });
-      } else {
-        console.error('Menu toggle element not found');
-      }
+      setupMenuToggle(); // Attach event after header insertion
     })
     .catch(error => console.error('Error loading header:', error));
 
@@ -63,4 +69,7 @@ document.addEventListener('DOMContentLoaded', function() {
         headerAvatar.innerHTML = '<img src="https://via.placeholder.com/40" alt="Placeholder avatar" width="40" style="border-radius: 50%;">';
       }
     });
+
+  // Re-check and attach event on window resize
+  window.addEventListener('resize', setupMenuToggle);
 });
