@@ -11,14 +11,16 @@ body {
   line-height: 1.6;
   color: #fff; /* Default text color */
   background: #ffffff; /* Default static background */
-  display: block; /* Default display, overridden by flex-layout */
+  height: 100vh; /* Constrain to viewport height */
+  overflow: hidden; /* Prevent scrolling unless content overflows */
+  display: block; /* Default display, overridden by .flex-layout */
 }
 
 /* Flex layout for sticky footer */
 .flex-layout {
   display: flex;
   flex-direction: column;
-  height: 100%; /* Allow natural height based on content */
+  height: 100%; /* Use full height of body */
 }
 
 /* Gradient background animation */
@@ -35,6 +37,7 @@ header {
   animation: radialPulse 8s ease-in-out infinite;
   padding: 1rem 2rem; /* Consistent padding */
   position: relative;
+  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .header-content {
@@ -123,7 +126,8 @@ header {
 .github-profile {
   text-align: center;
   padding: 2rem 0;
-  flex: 1 0 auto; /* Allow main content to grow */
+  flex: 1 0 auto; /* Allow main content to grow and fill space */
+  overflow-y: auto; /* Allow scrolling within content if it overflows */
 }
 
 /* GitHub avatar */
@@ -226,7 +230,7 @@ footer {
 /* Responsive design */
 @media (max-width: 600px) {
   header {
-    padding: 1rem;
+    padding: 0.5rem 1rem; /* Reduced padding for smaller screens */
   }
 
   .header-content {
@@ -235,14 +239,14 @@ footer {
   }
 
   #header-avatar {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
   }
 
   .menu-toggle {
     display: block;
     position: absolute;
-    top: 1rem;
-    right: 1rem;
+    top: 0.5rem;
+    right: 0.5rem;
   }
 
   .nav-menu {
@@ -252,9 +256,11 @@ footer {
     left: 0;
     width: 100%;
     background: rgba(0, 0, 0, 0.9);
-    padding: 1rem 0;
+    padding: 0.5rem 0;
     z-index: 1000;
     transition: all 0.3s ease-in-out;
+    max-height: calc(100vh - 2rem); /* Limit to viewport minus header height */
+    overflow-y: auto; /* Allow scrolling within menu if needed */
   }
 
   .nav-menu.active {
@@ -265,7 +271,7 @@ footer {
   .nav-menu ul {
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .nav-menu ul li a {
