@@ -12,7 +12,12 @@
   <header>
     <div class="header-content">
       <div id="header-avatar"></div>
-      <nav>
+      <button class="menu-toggle" aria-label="Toggle menu">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav class="nav-menu">
         <ul>
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
@@ -46,6 +51,12 @@
           document.getElementById('github-username').textContent = 'Hi, I\'m Vimal (GitHub data unavailable)';
           document.getElementById('github-bio').textContent = 'Unable to load GitHub profile information.';
         });
+
+      // Toggle menu visibility with transition
+      document.querySelector('.menu-toggle').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.querySelector('.nav-menu').classList.toggle('active');
+      });
     </script>
   </main>
   <footer>
