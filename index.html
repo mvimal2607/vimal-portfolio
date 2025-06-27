@@ -9,23 +9,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-  <header>
-    <div class="header-content">
-      <div id="header-avatar"></div>
-      <button class="menu-toggle" aria-label="Toggle menu">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </button>
-      <nav class="nav-menu">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
   <main>
     <section aria-label="GitHub Profile" id="github-profile" class="github-profile">
       <div id="github-avatar"></div>
@@ -33,13 +16,10 @@
       <p id="github-bio"></p>
     </section>
     <script>
-      // Fetch GitHub profile data for header and main section
+      // Fetch GitHub profile data for main section (header handled by header.js)
       fetch('https://api.github.com/users/mvimal2607')
         .then(response => response.json())
         .then(data => {
-          // Header
-          document.getElementById('header-avatar').innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="50" style="border-radius: 50%;"></a>`;
-
           // Main section
           document.getElementById('github-avatar').innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="180" style="border-radius: 50%;"></a>`;
           document.getElementById('github-username').textContent = `Hi, I'm ${data.login}`;
@@ -47,16 +27,10 @@
         })
         .catch(error => {
           console.error('Error fetching GitHub data:', error);
-          document.getElementById('header-avatar').innerHTML = '<img src="https://via.placeholder.com/50" alt="Placeholder avatar" width="50" style="border-radius: 50%;">';
+          document.getElementById('github-avatar').innerHTML = '<img src="https://via.placeholder.com/180" alt="Placeholder avatar" width="180" style="border-radius: 50%;">';
           document.getElementById('github-username').textContent = 'Hi, I\'m Vimal (GitHub data unavailable)';
           document.getElementById('github-bio').textContent = 'Unable to load GitHub profile information.';
         });
-
-      // Toggle menu visibility with transition
-      document.querySelector('.menu-toggle').addEventListener('click', function() {
-        this.classList.toggle('active');
-        document.querySelector('.nav-menu').classList.toggle('active');
-      });
     </script>
   </main>
   <footer>
@@ -75,5 +49,6 @@
       </a>
     </div>
   </footer>
+  <script src="header.js"></script>
 </body>
 </html>
