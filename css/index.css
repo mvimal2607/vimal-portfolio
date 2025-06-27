@@ -18,7 +18,7 @@ body {
 .flex-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Full viewport height */
+  height: 100%; /* Allow natural height based on content */
 }
 
 /* Gradient background animation */
@@ -34,7 +34,6 @@ header {
   background-size: 200% 200%;
   animation: radialPulse 8s ease-in-out infinite;
   padding: 1rem 2rem; /* Consistent padding */
-  /* Removed margin-bottom: 2rem */
   position: relative;
 }
 
@@ -202,6 +201,9 @@ header {
   margin: 0 auto; /* Centered with auto margins */
   padding: 0 1rem; /* Minimal padding for spacing */
   flex: 1 0 auto; /* Ensure content pushes footer down */
+  display: flex; /* Ensure flex context for children */
+  flex-direction: column; /* Stack children vertically */
+  min-height: 0; /* Allow shrinking if needed */
 }
 
 /* Footer styles */
@@ -212,7 +214,6 @@ footer {
   color: #fff;
   width: 100%;
   background: none; /* No background design */
-  /* Removed border-top: 1px solid rgba(255, 255, 255, 0.1) */
 }
 
 /* Animation for gradient */
