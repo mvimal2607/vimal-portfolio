@@ -2,18 +2,28 @@ document.addEventListener('DOMContentLoaded', function() {
   // Function to attach menu toggle event
   function setupMenuToggle() {
     const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle && getComputedStyle(menuToggle).display !== 'none') {
-      menuToggle.addEventListener('click', function() {
-        this.classList.toggle('active');
-        const navMenu = document.querySelector('.nav-menu');
-        if (navMenu) {
-          navMenu.classList.toggle('active');
-        } else {
-          console.error('Nav menu element not found');
+    if (menuToggle) {
+      const computedStyle = getComputedStyle(menuToggle);
+      if (computedStyle.display !== 'none') {
+        if (!menuToggle.dataset.eventAttached) {
+          menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            const navMenu = document.querySelector('.nav-menu');
+            if (navMenu) {
+              navMenu.classList.toggle('active');
+            } else {
+              console.error('Nav menu element not found');
+            }
+          });
+          menuToggle.dataset.eventAttached = 'true'; // Mark as attached
+          console.log('Menu toggle event attached');
         }
-      });
-    } else if (menuToggle) {
-      console.log('Menu toggle is currently hidden, waiting for resize or load');
+      } else if (menuToggle.dataset.eventAttached) {
+        // Remove event if button becomes hidden to avoid memory leaks
+        menuToggle.removeEventListener('click', menuToggle._clickHandler);
+        delete menuToggle.dataset.eventAttached;
+        console.log('Menu toggle event removed');
+      }
     } else {
       console.error('Menu toggle element not found');
     }
@@ -30,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     })
     .then(html => {
       document.body.insertAdjacentHTML('afterbegin', html);
-      setupMenuToggle(); // Attach event after header insertion
+      setupMenuToggle(); // Initial setup after header insertion
     })
     .catch(error => console.error('Error loading header:', error));
 
@@ -70,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-  // Re-check and attach event on window resize
-  window.addEventListener('resize', setupMenuToggle);
+  // Debounced resize handler to check menu toggle state
+  let resizeTimeout;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(setupMenuToggle, 100); // Debounce to avoid excessive calls
+  });
 });
