@@ -7,7 +7,7 @@
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #fff;
+  color: #fff; /* White text for contrast */
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -23,34 +23,73 @@ body {
 }
 
 header {
-  text-align: center;
-  padding: 2rem 0;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent black for contrast */
+  padding: 1rem 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-header h1 {
-  font-size: 2.5rem;
+.header-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+#header-avatar img {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  transition: transform 0.3s ease;
+}
+
+#header-avatar img:hover {
+  transform: scale(1.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
   color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
-main {
+nav ul li a:hover {
+  color: #d1a3a3; /* Subtle hover color to match warm tones */
+}
+
+.github-profile {
   text-align: center;
   padding: 2rem 0;
 }
 
-main img {
+#github-avatar img {
   border-radius: 50%;
   margin-bottom: 1rem;
   transition: transform 0.3s ease;
 }
 
-main img:hover {
+#github-avatar img:hover {
   transform: scale(1.05);
 }
 
-main h1 {
+#github-username {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  color: #fff;
+}
+
+#github-bio {
+  font-size: 1.2rem;
+  color: #ddd; /* Slightly lighter gray for bio text */
+  max-width: 600px;
+  margin: 0 auto;
 }
 
 .social-container {
@@ -92,20 +131,44 @@ main h1 {
 }
 
 .social-icon:has(.fa-envelope):hover {
-  background-color: #ea4335;
+  background-color: #a8b95d;
 }
 
 @media (max-width: 600px) {
-  header h1 {
-    font-size: 1.8rem;
+  header {
+    padding: 1rem;
   }
 
-  main img {
+  .header-content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  #header-avatar img {
+    width: 40px;
+    height: 40px;
+  }
+
+  nav ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .github-profile {
+    padding: 1rem 0;
+  }
+
+  #github-avatar img {
     width: 120px;
   }
 
-  main h1 {
+  #github-username {
     font-size: 1.5rem;
+  }
+
+  #github-bio {
+    font-size: 1rem;
   }
 
   .social-icon {

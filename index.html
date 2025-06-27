@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name viewport="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Vimal's personal profile page with links to GitHub, LinkedIn, Discord, and email.">
   <title>Vimal's Profile</title>
   <link rel="stylesheet" href="css/index.css">
@@ -10,15 +10,43 @@
 </head>
 <body>
   <header>
-    <h1>Vimal's Profile</h1>
+    <div class="header-content">
+      <div id="header-avatar"></div>
+      <nav>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
   <main>
-    <section aria-label="Profile introduction">
-      <a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile">
-        <img src="https://avatars.githubusercontent.com/u/124255732?v=4" alt="Vimal's profile picture" width="180">
-      </a>
-      <h1>Hi, I'm Vimal</h1>
+    <section aria-label="GitHub Profile" id="github-profile" class="github-profile">
+      <div id="github-avatar"></div>
+      <h1 id="github-username"></h1>
+      <p id="github-bio"></p>
     </section>
+    <script>
+      // Fetch GitHub profile data for header and main section
+      fetch('https://api.github.com/users/mvimal2607')
+        .then(response => response.json())
+        .then(data => {
+          // Header
+          document.getElementById('header-avatar').innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="50" style="border-radius: 50%;"></a>`;
+
+          // Main section
+          document.getElementById('github-avatar').innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="180" style="border-radius: 50%;"></a>`;
+          document.getElementById('github-username').textContent = `Hi, I'm ${data.login}`;
+          document.getElementById('github-bio').textContent = data.bio || 'No bio available.';
+        })
+        .catch(error => {
+          console.error('Error fetching GitHub data:', error);
+          document.getElementById('header-avatar').innerHTML = '<img src="https://via.placeholder.com/50" alt="Placeholder avatar" width="50" style="border-radius: 50%;">';
+          document.getElementById('github-username').textContent = 'Hi, I\'m Vimal (GitHub data unavailable)';
+          document.getElementById('github-bio').textContent = 'Unable to load GitHub profile information.';
+        });
+    </script>
   </main>
   <footer>
     <div class="social-container" aria-label="Social media links">
