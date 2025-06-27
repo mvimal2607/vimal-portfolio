@@ -4,25 +4,20 @@ document.addEventListener('DOMContentLoaded', function() {
     const menuToggle = document.querySelector('.menu-toggle');
     if (menuToggle) {
       const computedStyle = getComputedStyle(menuToggle);
-      if (computedStyle.display !== 'none') {
-        if (!menuToggle.dataset.eventAttached) {
-          menuToggle.addEventListener('click', function() {
-            this.classList.toggle('active');
-            const navMenu = document.querySelector('.nav-menu');
-            if (navMenu) {
-              navMenu.classList.toggle('active');
-            } else {
-              console.error('Nav menu element not found');
-            }
-          });
-          menuToggle.dataset.eventAttached = 'true'; // Mark as attached
-          console.log('Menu toggle event attached');
-        }
-      } else if (menuToggle.dataset.eventAttached) {
-        // Remove event if button becomes hidden to avoid memory leaks
-        menuToggle.removeEventListener('click', menuToggle._clickHandler);
-        delete menuToggle.dataset.eventAttached;
-        console.log('Menu toggle event removed');
+      if (computedStyle.display !== 'none' && !menuToggle.dataset.eventAttached) {
+        menuToggle.addEventListener('click', function() {
+          this.classList.toggle('active');
+          const navMenu = document.querySelector('.nav-menu');
+          if (navMenu) {
+            navMenu.classList.toggle('active');
+          } else {
+            console.error('Nav menu element not found');
+          }
+        });
+        menuToggle.dataset.eventAttached = 'true'; // Mark as attached
+        console.log('Menu toggle event attached');
+      } else if (computedStyle.display === 'none') {
+        console.log('Menu toggle is hidden');
       }
     } else {
       console.error('Menu toggle element not found');
@@ -80,10 +75,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
 
-  // Debounced resize handler to check menu toggle state
+  // Debounced resize handler with reinitialization
   let resizeTimeout;
   window.addEventListener('resize', function() {
     clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(setupMenuToggle, 100); // Debounce to avoid excessive calls
+    resizeTimeout = setTimeout(() => {
+      setupMenuToggle(); // Re-check and attach on resize
+      // Force re-evaluate active state to reset any stuck toggles
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      if (menuToggle && navMenu) {
+        menuToggle.classList.remove('active');
+        navMenu.classList.remove('active');
+      }
+    }, 100); // Debounce delay
   });
 });
