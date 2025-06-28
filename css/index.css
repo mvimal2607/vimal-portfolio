@@ -109,6 +109,8 @@ header {
   font-size: 1rem;
   padding: 0.25rem 0.5rem; /* Added padding for better click area */
   transition: color 0.3s ease;
+  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for contrast */
+  border-radius: 4px; /* Slight rounding for style */
 }
 
 .nav-menu ul li a:hover {
