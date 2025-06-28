@@ -97,11 +97,6 @@ header {
   transform: rotate(-45deg) translate(6px, -6px);
 }
 
-/* Navigation menu */
-.nav-menu {
-  display: flex;
-}
-
 .nav-menu ul {
   list-style: none;
   display: flex;
@@ -114,8 +109,6 @@ header {
   font-size: 1rem;
   padding: 0.25rem 0.5rem; /* Added padding for better click area */
   transition: color 0.3s ease;
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for contrast */
-  border-radius: 4px; /* Slight rounding for style */
 }
 
 .nav-menu ul li a:hover {
@@ -251,16 +244,11 @@ footer {
 
   .nav-menu {
     display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
+    position: relative;
+    left: auto;
     width: 100%;
-    background: rgba(0, 0, 0, 0.9);
     padding: 0.5rem 0;
-    z-index: 1000;
-    transition: all 0.3s ease-in-out;
     max-height: calc(100vh - 2rem); /* Limit to viewport minus header height */
-    overflow-y: auto; /* Allow scrolling within menu if needed */
   }
 
   .nav-menu.active {
@@ -270,19 +258,8 @@ footer {
 
   .nav-menu ul {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-end;
     gap: 0.5rem;
-  }
-
-  .nav-menu ul li a {
-    font-size: 1.2rem;
-    padding: 0.5rem 1rem;
-    color: #000; /* Black text */
-    background: rgba(255, 255, 255, 0.8); /* Semi-transparent background */
-  }
-
-  .nav-menu ul li a:hover {
-    color: #800000; /* Darker hover color */
   }
 
   .container {
