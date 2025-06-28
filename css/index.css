@@ -1,37 +1,21 @@
-/* Reset and global styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Base body styles */
 body {
   font-family: Arial, sans-serif;
   line-height: 1.6;
-  color: #fff; /* Default text color */
-  background: #ffffff; /* Default static background */
-  height: 100vh; /* Constrain to viewport height */
-  overflow: hidden; /* Prevent scrolling unless content overflows */
-  display: block; /* Default display, overridden by .flex-layout */
-}
-
-/* Flex layout for sticky footer */
-.flex-layout {
-  display: flex;
-  flex-direction: column;
-  height: 100%; /* Use full height of body */
-}
-
-/* Gradient background animation */
-.gradient-bg {
-  background: radial-gradient(circle at center, #4a1d2a, #8b4513, #4a1d2a, #6a2e5a);
-  background-size: 200% 200%;
-  animation: radialPulse 8s ease-in-out infinite;
+  color: #fff;
+  background: rgb(36, 36, 36);
+  height: 100vh;
+  overflow: hidden;
+  display: block;
 }
 
 header {
-  padding: 1rem 2rem; /* Consistent padding */
+  padding: 1rem 2rem;
 }
 
 .header-content {
@@ -42,7 +26,6 @@ header {
   justify-content: space-between;
 }
 
-/* Header avatar */
 #header-avatar img {
   border-radius: 50%;
   width: 40px;
@@ -54,14 +37,12 @@ header {
   transform: scale(1.1);
 }
 
-/* Menu toggle */
 .menu-toggle {
   background: none;
   border: none;
   color: #fff;
-  font-size: 0; /* Hide text, use spans for bars */
   cursor: pointer;
-  display: none; /* Hidden by default on large screens */
+  display: none;
   padding: 0.5rem;
   position: relative;
   width: 30px;
@@ -98,28 +79,20 @@ header {
 }
 
 .nav-menu ul li a {
-  color: #000; /* Black text for header links */
+  color: #ffffff;
   text-decoration: none;
   font-size: 1rem;
-  padding: 0.25rem 0.5rem; /* Added padding for better click area */
+  padding: 0.25rem 0.5rem;
   transition: color 0.3s ease;
-  background: rgba(255, 255, 255, 0.8); /* Semi-transparent background for contrast */
-  border-radius: 4px; /* Slight rounding for style */
 }
 
-.nav-menu ul li a:hover {
-  color: #800000; /* Darker hover color for better contrast */
-}
-
-/* GitHub profile section */
 .github-profile {
   text-align: center;
   padding: 2rem 0;
-  flex: 1 0 auto; /* Allow main content to grow and fill space */
-  overflow-y: auto; /* Allow scrolling within content if it overflows */
+  flex: 1 0 auto;
+  overflow-y: auto;
 }
 
-/* GitHub avatar */
 #github-avatar img {
   border-radius: 50%;
   margin-bottom: 1rem;
@@ -130,7 +103,6 @@ header {
   transform: scale(1.05);
 }
 
-/* GitHub username and bio */
 #github-username {
   font-size: 1.8rem;
   margin-bottom: 1rem;
@@ -138,12 +110,11 @@ header {
 
 #github-bio {
   font-size: 1.2rem;
-  color: #ddd; /* Lighter gray for bio */
+  color: #ddd;
   max-width: 600px;
   margin: 0 auto;
 }
 
-/* Social container */
 .social-container {
   display: flex;
   gap: 15px;
@@ -151,7 +122,6 @@ header {
   margin: 2rem 0;
 }
 
-/* Social icons */
 .social-icon {
   display: flex;
   align-items: center;
@@ -187,39 +157,28 @@ header {
   background-color: #A00000;
 }
 
-/* Container for main content */
 .container {
   width: 100%;
-  max-width: 1200px; /* Controlled width */
-  margin: 0 auto; /* Centered with auto margins */
-  padding: 0 1rem; /* Minimal padding for spacing */
-  flex: 1 0 auto; /* Ensure content pushes footer down */
-  display: flex; /* Ensure flex context for children */
-  flex-direction: column; /* Stack children vertically */
-  min-height: 0; /* Allow shrinking if needed */
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
 }
 
-/* Footer styles */
 footer {
-  flex-shrink: 0; /* Prevent footer from shrinking */
+  flex-shrink: 0;
   padding: 1rem;
   text-align: center;
   color: #fff;
   width: 100%;
-  background: none; /* No background design */
 }
 
-/* Animation for gradient */
-@keyframes radialPulse {
-  0% { background-position: 0% 0%; }
-  50% { background-position: 100% 100%; }
-  100% { background-position: 0% 0%; }
-}
-
-/* Responsive design */
 @media (max-width: 600px) {
   header {
-    padding: 0.5rem 1rem; /* Reduced padding for smaller screens */
+    padding: 0.5rem 1rem;
   }
 
   .header-content {
@@ -244,7 +203,7 @@ footer {
     left: auto;
     width: 100%;
     padding: 0.5rem 0;
-    max-height: calc(100vh - 2rem); /* Limit to viewport minus header height */
+    max-height: calc(100vh - 2rem);
   }
 
   .nav-menu.active {
@@ -259,7 +218,7 @@ footer {
   }
 
   .container {
-    padding: 0 0.5rem; /* Reduced padding on small screens */
+    padding: 0 0.5rem;
   }
 
   .github-profile {
