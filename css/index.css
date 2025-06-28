@@ -184,7 +184,7 @@ header {
 }
 
 .social-icon:has(.fa-envelope):hover {
-  background-color: #a8b95d;
+  background-color: #A00000;
 }
 
 /* Container for main content */
