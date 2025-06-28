@@ -30,14 +30,8 @@ body {
   animation: radialPulse 8s ease-in-out infinite;
 }
 
-/* Header styles */
 header {
-  background: radial-gradient(circle at center, #4a1d2a, #8b4513, #4a1d2a, #6a2e5a);
-  background-size: 200% 200%;
-  animation: radialPulse 8s ease-in-out infinite;
   padding: 1rem 2rem; /* Consistent padding */
-  position: relative;
-  flex-shrink: 0; /* Prevent header from shrinking */
 }
 
 .header-content {
@@ -51,8 +45,8 @@ header {
 /* Header avatar */
 #header-avatar img {
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
+  width: 40px;
+  height: 40px;
   transition: transform 0.3s ease;
 }
 
