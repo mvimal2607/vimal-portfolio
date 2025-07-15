@@ -1,16 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="New page with Vimal's header">
-  <title>About</title>
-  <link rel="stylesheet" href="css/index.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About">
+    <title>About Me</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/about.css">
 </head>
-<body>
-  <main>
-  </main>
-  <script src="header.js"></script>
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
+  <header class="bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-900 dark:to-indigo-900 text-white text-center py-8">
+    <h1 class="text-3xl md:text-3xl tracking-tight">About Me</h1>
+  </header>
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 sm:p-10 fade-in">
+            <h2 class="text-2xl md:text-3xl text-blue-900 dark:text-blue-300 mb-6">Who I Am</h2>
+            <p class="mb-4 leading-relaxed">Hello! I'm Vimal, and I'm passionate about the Android Open Source Project, Linux, Python, and Free and Open Source Software (FOSS). I strive to improve myself every day by learning new technologies and contributing to open-source projects. I enjoy collaborating with like-minded individuals and sharing knowledge within the community.</p>
+            <div class="flex flex-wrap gap-3">
+            </div>
+            <h2 class="text-2xl md:text-3xl text-blue-900 dark:text-blue-300 mb-6 mt-8">My Journey</h2>
+            <p class="mb-4 leading-relaxed">What is My Journey? 🤷🏻‍♂️</p>
+            <p class="mb-4 leading-relaxed">Let's connect! Reach out via <a href="https://t.me/mvimal2607" class="custom-link text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300" aria-label="Telegram profile of Vimal">Telegram (@mvimal2607)</a> or check out my work on <a href="https://github.com/mvimal2607" class="custom-link text-blue-600 dark:text-blue-400 hover:text-blue-800 dark:hover:text-blue-300" aria-label="GitHub profile of Vimal">GitHub</a> and Follow!</p>
+        </div>
+    </div>
+    <footer class="bg-gray-900 dark:bg-gray-950 text-white text-center py-6">
+        <p class="text-sm">© 2025 Vimal. All rights reserved.</p>
+    </footer>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const elements = document.querySelectorAll('.fade-in');
+            elements.forEach((el, index) => {
+                el.style.animationDelay = `${index * 0.2}s`;
+            });
+        });
+    </script>
 </body>
 </html>
