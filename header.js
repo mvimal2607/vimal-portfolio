@@ -1,79 +1,39 @@
-document.addEventListener('DOMContentLoaded', function() {
-  // Function to attach menu toggle event
-  function setupMenuToggle() {
-    const menuToggle = document.querySelector('.menu-toggle');
-    if (menuToggle) {
-      const computedStyle = getComputedStyle(menuToggle);
-      if (computedStyle.display !== 'none' && !menuToggle.dataset.eventAttached) {
-        menuToggle.addEventListener('click', function() {
-          this.classList.toggle('active');
-          const navMenu = document.querySelector('.nav-menu');
-          if (navMenu) {
-            navMenu.classList.toggle('active');
-          } else {
-            console.error('Nav menu element not found');
-          }
-        });
-        menuToggle.dataset.eventAttached = 'true'; // Mark as attached
-        console.log('Menu toggle event attached');
-      } else if (computedStyle.display === 'none') {
-        console.log('Menu toggle is hidden');
-      }
-    } else {
-      console.error('Menu toggle element not found');
-    }
-  }
+<header class="sticky top-0 z-50 bg-gradient-to-r from-blue-700 to-indigo-700 dark:from-blue-900 dark:to-indigo-900 text-white shadow-md">
+    <div class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between h-16">
+            
+            <div class="flex-shrink-0">
+                <a href="/" class="text-2xl font-bold tracking-tight hover:text-gray-200 transition-colors" aria-label="Homepage">
+                    Vimal
+                </a>
+            </div>
 
-  // Fetch and insert header
-  fetch('header.html')
-    .then(response => {
-      if (!response.ok) {
-        console.error('Header fetch failed:', response.status, response.statusText);
-        throw new Error('Header fetch failed');
-      }
-      return response.text();
-    })
-    .then(html => {
-      document.body.insertAdjacentHTML('afterbegin', html);
-      setupMenuToggle(); // Initial setup after header insertion
-    })
-    .catch(error => console.error('Error loading header:', error));
+            <nav class="hidden md:block">
+                <div class="ml-10 flex items-baseline space-x-4" id="nav-links">
+                    <a href="/" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">Home</a>
+                    <a href="about.html" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">About</a>
+                    <a href="https://github.com/mvimal2607" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white px-3 py-2 rounded-md text-sm font-medium transition-colors">GitHub</a>
+                </div>
+            </nav>
+            <div class="-mr-2 flex md:hidden">
+                <button type="button" id="mobile-menu-button" class="inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-white hover:bg-blue-700 focus:outline-none" aria-controls="mobile-menu" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>                    
+                    <svg id="hamburger-icon" class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg id="close-icon" class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
 
-  // Fetch GitHub profile data for header
-  fetch('https://api.github.com/users/mvimal2607')
-    .then(response => {
-      if (!response.ok) throw new Error('GitHub API request failed');
-      return response.json();
-    })
-    .then(data => {
-      const headerAvatar = document.getElementById('header-avatar');
-      if (headerAvatar) {
-        headerAvatar.innerHTML = `<a href="https://github.com/mvimal2607" target="_blank" title="Visit Vimal's GitHub" aria-label="Vimal's GitHub profile"><img src="${data.avatar_url}" alt="Vimal's GitHub profile picture" width="40" style="border-radius: 50%;"></a>`;
-      } else {
-        console.error('Header avatar element not found');
-      }
-    })
-    .catch(error => {
-      console.error('Error fetching GitHub data:', error);
-      const headerAvatar = document.getElementById('header-avatar');
-      if (headerAvatar) {
-        headerAvatar.innerHTML = '<img src="https://via.placeholder.com/40" alt="Placeholder avatar" width="40" style="border-radius: 50%;">';
-      }
-    });
-
-  // Debounced resize handler with reinitialization
-  let resizeTimeout;
-  window.addEventListener('resize', function() {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-      setupMenuToggle(); // Re-check and attach on resize
-      // Force re-evaluate active state to reset any stuck toggles
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navMenu = document.querySelector('.nav-menu');
-      if (menuToggle && navMenu) {
-        menuToggle.classList.remove('active');
-        navMenu.classList.remove('active');
-      }
-    }, 100); // Debounce delay
-  });
-});
+    <div class="hidden md:hidden" id="mobile-menu">
+        <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3" id="mobile-nav-links">
+             <a href="/" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">Home</a>
+            <a href="about.html" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">About</a>
+            <a href="https://github.com/mvimal2607" target="_blank" rel="noopener noreferrer" class="text-gray-300 hover:bg-blue-600 dark:hover:bg-blue-800 hover:text-white block px-3 py-2 rounded-md text-base font-medium transition-colors">GitHub</a>
+        </div>
+    </div>
+</header>
