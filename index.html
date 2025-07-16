@@ -6,17 +6,34 @@
     <meta name="description" content="Vimal's personal profile page.">
     <title>Vimal's Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/socials.css">
     <link rel="stylesheet" href="css/about.css">
 </head>
 <body class="bg-gray-50 text-gray-900 dark:bg-gray-900 dark:text-gray-100 antialiased transition-colors duration-300">
     <div id="header-placeholder"></div>
     <main class="container mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
-        <section aria-label="GitHub Profile" class="text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-xl fade-in">
+        <section aria-label="GitHub Profile" class="github-profile text-center p-8 bg-white dark:bg-gray-800 rounded-xl shadow-xl fade-in">
             <div id="github-avatar" class="mb-4 inline-block"></div>
             <h1 id="github-username" class="text-3xl md:text-4xl font-bold text-blue-900 dark:text-blue-300"></h1>
             <p id="github-bio" class="mt-2 leading-relaxed"></p>
+            <div class="social-container" aria-label="Social media links">
+                <a href="https://github.com/mvimal2607" target="_blank" class="social-icon github" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://linkedin.com/in/mvimal2607" target="_blank" class="social-icon linkedin" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://discord.gg/AEESYSwR48" target="_blank" class="social-icon discord" aria-label="Discord">
+                    <i class="fab fa-discord"></i>
+                </a>
+                <a href="mailto:mvimal2607@proton.me" class="social-icon email" aria-label="Email">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
         </section>
     </main>
+    <div id="footer-placeholder"></div>
     <script src="js/app.js"></script>
 </body>
 </html>
