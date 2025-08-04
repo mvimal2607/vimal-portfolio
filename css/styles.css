@@ -65,10 +65,13 @@ body {
     .nav-menu {
         display: none;
         flex-direction: column;
-        width: 100%;
-        position: absolute;
+        width: 50%;
+        max-width: 300px;
+        position: fixed;
         top: 64px;
-        left: 0;
+        right: 0;
+        height: auto;
+        max-height: 50vh;
         background-color: #ffffff;
         padding: 1rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
