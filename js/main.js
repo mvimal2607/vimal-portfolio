@@ -22,6 +22,19 @@ const appearOptions = {
     rootMargin: "0px 0px -50px 0px"
 };
 
+const appearOnScroll = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, appearOptions);
+
+faders.forEach(fader => {
+    appearOnScroll.observe(fader);
+});
+
 // Copy to clipboard function
 function copyCode(button) {
     const pre = button.parentElement.querySelector('pre');
@@ -36,15 +49,19 @@ function copyCode(button) {
     });
 }
 
-const appearOnScroll = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-        }
-    });
-}, appearOptions);
+// Navigation bar hide/show on scroll
+let lastScrollTop = 0;
+const nav = document.getElementById('main-nav');
 
-faders.forEach(fader => {
-    appearOnScroll.observe(fader);
+window.addEventListener('scroll', () => {
+    let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (currentScroll > lastScrollTop) {
+        // Scrolling down
+        nav.classList.add('nav-hidden');
+    } else if (currentScroll < lastScrollTop) {
+        // Scrolling up
+        nav.classList.remove('nav-hidden');
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll; // Prevent negative scroll values
 });
