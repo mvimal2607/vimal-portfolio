@@ -42,10 +42,10 @@
                     <li>A customized, liberated Android experience.</li>
                 </ul>
 
-                <h3 class="text-xl font-semibold mb-2">Step 1: Assess Your Device</h3>
+                <h3 class="text-xl font-semibold mb-2">Check Your Device Development</h3>
                 <p class="mb-4">Start by checking if your device supports bootloader unlocking, a must for installing a de-Googled OS. Visit your manufacturer’s website or XDA Developers forums for your model’s specifics.</p>
 
-                <h3 class="text-xl font-semibold mb-2">Step 2: Disable Google Apps</h3>
+                <h3 class="text-xl font-semibold mb-2">Disable Google Apps</h3>
                 <p class="mb-4">Not ready for a full ROM overhaul? Begin by disabling Google apps:</p>
                 <ol class="list-decimal pl-6 mb-4">
                     <li>Navigate to <strong>Settings > Apps</strong>.</li>
@@ -55,25 +55,27 @@
                 </ol>
                 <p class="mb-4"><strong>Tip</strong>: Disabling Google Play Services may break apps relying on it, like push notifications. Be prepared to replace those apps or use microG.</p>
 
-                <h3 class="text-xl font-semibold mb-2">Step 3: Install a De-Googled Operating System</h3>
-                <p class="mb-4">For ultimate control, swap standard Android for a privacy-focused OS like LineageOS or GrapheneOS:</p>
-                <ol class="list-decimal pl-6 mb-4">
-                    <li><strong>Backup everything</strong>: Flashing a ROM wipes your device.</li>
-                    <li><strong>Unlock the bootloader</strong>: Follow device-specific instructions (e.g., via fastboot).</li>
-                    <li><strong>Install a custom recovery</strong>: Use recommended recovery by your device developer.</li>
-                    <li><strong>Flash the ROM</strong>: Download <a href="http://lineageos.org" class="text-indigo-600 hover:underline">LineageOS</a> or <a href="http://grapheneos.org" class="text-indigo-600 hover:underline">GrapheneOS</a> from their official sites and flash via recovery.</li>
-                    <li><strong>Optional</strong>: Install microG for apps needing Google Services compatibility.</li>
-                </ol>
-                <p class="mb-4">My picks:</p>
-                <ul class="list-disc pl-6 mb-4">
-                    <li><strong>LineageOS</strong>: Feature-packed, widely supported, and free of Google.</li>
-                    <li><strong>GrapheneOS</strong>: A security fortress, ideal for privacy purists.</li>
-                </ul>
-                <p class="mb-4"><strong>Tip</strong>: Research your device’s ROM support on XDA Developers to avoid compatibility issues.</p>
-
-                <h3 class="text-xl font-semibold mb-2">Step 4: Replace Google Services and Apps</h3>
-                <p class="mb-4">Ditch Google’s ecosystem with these privacy-first apps. Each app has dedicated details below to guide your transition.</p>
+                <h3 class="text-xl font-semibold mb-2">Replace Google Services and Apps</h3>
+                <p class="mb-4">Replacing Google Services and Apps involves using alternative applications and services that prioritize privacy and security while providing similar functionalities to those offered by Google. Many users seek these alternatives to reduce their reliance on Google and enhance their data privacy.</p>
                 <div class="space-y-6">
+                    <details class="border rounded-lg p-4">
+                        <summary class="text-lg font-semibold text-indigo-600">Operating System</summary>
+                        <p class="mt-2"> <strong>LineageOS: </strong><a href="htts://lineageos.org" class="text-indigo-600 hover:underline">LineageOS</a> is an open-source operating system based on the Android platform. It is designed to provide users with a customizable and bloatware-free experience, allowing them to enjoy the latest Android features on a wide range of devices.</p>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li><a href="https://wiki.lineageos.org/devices/" class="text-indigo-600 hover:underline">Supported Devices</a></li>
+                            <li><a href="https://lineageos.org/community" class="text-indigo-600 hover:underline">Community</a></li>
+                        </ul>
+                        <p class="mt-2"><strong>GrapheneOS: </strong><a href="http://grapheneos.org" class="text-indigo-600 hover:underline">GrapheneOS</a> is a privacy and security-focused mobile operating system based on the Android Open Source Project (AOSP). It is designed to provide users with a secure environment for their mobile devices while maintaining compatibility with Android applications.</p>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li><a href="https://grapheneos.org/releases" class="text-indigo-600 hover:underline">Supported Devices</a></li>
+                            <li><a href="https://grapheneos.org/contact#community" class="text-indigo-600 hover:underline">Community</a></li>
+                        </ul>
+                        <p class="mt-2"><strong>CalyxOS: </strong><a href="http://calyxos.org" class="text-indigo-600 hover:underline">CalyxOS</a> is a privacy-focused mobile operating system based on the Android Open Source Project (AOSP). It aims to provide users with a secure and user-friendly experience while maintaining compatibility with Android applications. CalyxOS is designed for those who prioritize privacy and security without sacrificing usability.</p>
+                        <ul class="list-disc pl-6 mb-4">
+                            <li><a href="https://calyxos.org/install/" class="text-indigo-600 hover:underline">Supported Devices</a></li>
+                            <li><a href="https://calyxos.org/community/" class="text-indigo-600 hover:underline">Community</a></li>
+                        </ul>
+                    </details>
                     <details class="border rounded-lg p-4">
                         <summary class="text-lg font-semibold text-indigo-600">App Store</summary>
                         <p class="mt-2"> <strong>F-Droid: </strong><a href="https://fdroid.org" class="text-indigo-600 hover:underline">F-Droid</a> is an open-source software repository for Android applications. It provides a platform for users to download and install free and open-source apps, ensuring that they have access to software that respects their privacy and freedom.</p>
@@ -118,7 +120,7 @@
                     </details>
                 </div>
                 <p class="mt-4 mb-4">Install apps from official websites or F-Droid. For apps requiring Google Play Services (e.g., banking apps), consider <a href="https://microg.org" class="text-indigo-600 hover:underline">microG</a>, a lightweight, open-source alternative. Test compatibility after installation.</p>
-                <h3 class="text-xl font-semibold mb-2">Step 5: Update Your Accounts</h3>
+                <h3 class="text-xl font-semibold mb-2">Update Your Accounts</h3>
                 <p class="mb-4">Switch your account email addresses to Proton Mail for services like GitHub, XDA Developers, LinkedIn, banking apps, and X. I’ve done this across all my essential accounts, and it ties everything into a secure, encrypted ecosystem.</p>
 
                 <h3 class="text-xl font-semibold mb-2">Conclusion</h3>
