@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YAAP File Manager</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    <div class="max-w-4xl mx-auto p-6">
+        <h1 class="text-2xl font-bold mb-4 text-gray-900">YAAP File Manager</h1>
+        <div class="bg-white p-4 rounded-lg shadow-md">
+            <div class="flex items-center mb-2">
+                <span class="text-gray-600">YAAP for Realme GT Master Edition</span>
+            </div>
+            <div class="space-y-4" id="assetsList"></div>
+        </div>
+    </div>
+    <script>
+        async function fetchAssets() {
+            const owner = "mvimal2607";
+            const repo = "YAAP_lunaa";
+            try {
+                const response = await fetch(`https://api.github.com/repos/${owner}/${repo}/releases`);
+                const releases = await response.json();
+                const assetsList = document.getElementById("assetsList");
+                if (releases.length === 0) {
+                    assetsList.innerHTML = "<p>No releases found.</p>";
+                    return;
+                }
+                releases.forEach(release => {
+                    const card = document.createElement("div");
+                    card.className = "p-4 bg-gray-50 rounded-lg shadow-md";
+                    let assetsHtml = "";
+                    release.assets.forEach(asset => {
+                        assetsHtml += `<div class="flex items-center justify-between mb-2 last:mb-0">
+                            <div class="flex items-center space-x-4"><span class="text-2xl">📥</span><a href="${asset.browser_download_url}" class="text-indigo-600 hover:underline" download>${asset.name}</a></div>
+                            <span class="text-gray-600">${asset.download_count} downloads</span>
+                        </div>`;
+                    });
+                    card.innerHTML = `<h3 class="text-lg font-semibold mb-2">${release.tag_name}</h3>${assetsHtml}`;
+                    assetsList.appendChild(card);
+                });
+            } catch (error) {
+                console.error("Error fetching assets:", error);
+                document.getElementById("assetsList").innerHTML = "<p>Error loading assets. Check console for details.</p>";
+            }
+        }
+        fetchAssets();
+    </script>
+</body>
+</html>
