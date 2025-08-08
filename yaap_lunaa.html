@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YAAP File Manager</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="bg-gray-100">
+<body class="text-gray-800 smooth-scroll">
     <div class="max-w-4xl mx-auto p-6">
         <h1 class="text-2xl font-bold mb-4 text-gray-900">YAAP File Manager</h1>
         <div class="bg-white p-4 rounded-lg shadow-md">
@@ -28,6 +29,9 @@
                     assetsList.innerHTML = "<p>No releases found.</p>";
                     return;
                 }
+                // Sort releases by published_at to find the latest
+                releases.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
+                const latestRelease = releases[0];
                 releases.forEach(release => {
                     const card = document.createElement("div");
                     card.className = "p-4 bg-gray-50 rounded-lg shadow-md";
@@ -38,7 +42,11 @@
                             <span class="text-gray-600">${asset.download_count} downloads</span>
                         </div>`;
                     });
-                    card.innerHTML = `<h3 class="text-lg font-semibold mb-2">${release.tag_name}</h3>${assetsHtml}`;
+                    // Add "Latest" label to the most recent release
+                    const tagHeader = release.id === latestRelease.id 
+                        ? `<h3 class="text-lg font-semibold mb-2 flex items-center"><span class="bg-green-500 text-white text-xs font-bold px-2 py-1 rounded mr-2">Latest</span>${release.tag_name}</h3>`
+                        : `<h3 class="text-lg font-semibold mb-2">${release.tag_name}</h3>`;
+                    card.innerHTML = tagHeader + assetsHtml;
                     assetsList.appendChild(card);
                 });
             } catch (error) {
